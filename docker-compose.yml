@@ -5,9 +5,10 @@ services:
      depends_on:
        - "mysql"
      ports:
-       - "8980:8080" # CHANGE TO MATCH YOUR CONFIG/PROXY
-       - "1337:1337" # CHANGE TO MATCH YOUR CONFIG/PROXY
-       - "8443:8443" # CHANGE TO MATCH YOUR CONFIG/PROXY
+# CHANGE TO MATCH YOUR CONFIG/PROXY
+       - "8980:8080"
+       - "1337:1337"
+       - "8443:8443"
      volumes:
 # CHANGE TO IMPORT YOUR CERTS LOCATION
        - "./certs:/etc/certs"
