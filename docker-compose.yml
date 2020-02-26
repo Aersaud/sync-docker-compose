@@ -9,24 +9,28 @@ services:
        - "1337:1337" # CHANGE TO MATCH YOUR CONFIG/PROXY
        - "8443:8443" # CHANGE TO MATCH YOUR CONFIG/PROXY
      volumes:
-       - "./certs:/etc/certs" # CHANGE TO IMPORT YOUR CERTS
-       - "./config.yaml:/home/syncuser/sync/config.yaml" # CHANGE TO MATCH YOUR CONFIG FILE
+# CHANGE TO IMPORT YOUR CERTS LOCATION
+       - "./certs:/etc/certs"
+# CHANGE TO IMPORT YOUR CONFIG FILE
+       - "./config.yaml:/home/syncuser/sync/config.yaml"
 #  UNCOMMENT IF YOU PLAN ON USING A REVERSE PROXY - YOU MUST UPDATE THIS TO MATCH YOUR PROXY NETWORK       
-#     networks:
-#       - nginx_nginx-web
+     networks:
+#       - nginx
         - sync_internal
    mysql:
      image: mariadb:10.5.1
      environment:
-       - MYSQL_ROOT_PASSWORD=sync # MAKE SURE THIS MATCHES THE CONFIG FILE
-       - MYSQL_DATABASE=cytube3 # MAKE SURE THIS MATCHES THE CONFIG FILE
-       - MYSQL_USER=cytube3 # MAKE SURE THIS MATCHES THE CONFIG FILE
-       - MYSQL_PASSWORD=super_secure_password # MAKE SURE THIS MATCHES THE CONFIG FILE
+# CHANGE THESE TO MATCH THE CONFIG FILE
+       - MYSQL_ROOT_PASSWORD=sync 
+       - MYSQL_DATABASE=cytube3 
+       - MYSQL_USER=cytube3
+       - MYSQL_PASSWORD=super_secure_password
      volumes:
-       - "./mysql:/var/lib/mysql" # THIS WILL MOUNT TO THE SAME FOLDER YOU RUN DOCKER-COMPOSE UP -D FROM CHANGE IF NEEDED      
+# THIS WILL MOUNT TO THE SAME FOLDER YOU RUN DOCKER-COMPOSE UP -D FROM CHANGE IF NEEDED
+       - "./mysql:/var/lib/mysql"      
      networks:
        - sync_internal
 networks:
-  nginx_nginx-web:
-    external: true
+#  nginx:
+#    external: true
   sync_internal:
