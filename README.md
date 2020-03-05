@@ -1,3 +1,5 @@
+# Please refer to my fork instead: https://github.com/Aersaud/cytube-docker
+
 # sync-docker-compose
 Docker compose for sync by calzoneman
 
